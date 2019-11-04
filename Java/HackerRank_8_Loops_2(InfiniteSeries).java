@@ -1,7 +1,7 @@
 /*
     Objective
     We use the integers a, b, and n to create the following series:
-        (a + 2^0 + b), (a + 2^0 * b + 2^1 * b),..., (a + 2^0 * b + 2^1 * b + ... + 2^n-1 * b)
+        (a + 2^0 * b), (a + 2^0 * b + 2^1 * b),..., (a + 2^0 * b + 2^1 * b + ... + 2^n-1 * b)
 
 
     You are given q queries in the form of a, b, and n. For each query, print the series 
@@ -29,23 +29,23 @@ import java.io.*;
 class Solution{
     public static void main(String []argh){
         Scanner in = new Scanner(System.in);
-        int t=in.nextInt();
-        for(int i=0;i<t;i++){
+        int q=in.nextInt();
+        for(int i=0;i<q;i++){
             int a = in.nextInt();
             int b = in.nextInt();
             int n = in.nextInt();
-            int output = a + Math.pow(2, 0) * b; 
-            if (i!=0){
-                for(int j = i; j<0;i--){
-                    output+= b + Math.pow(2, i);
-                }
+            double output = a + Math.pow(2,0) * b;
+            //(a + 2^0 * b), (a + 2^0 * b + 2^1 * b),...,
+            for(int j = 0; j < n; j++){
+                if (j!=0){   
+                 output += Math.pow(2,j) * b;
+                }                
+                System.out.print(Math.round(output) + " ");
             }
-            System.out.print(output + " ");
+            System.out.println();
         }
         in.close();
     }
 }
-
-
 
 
