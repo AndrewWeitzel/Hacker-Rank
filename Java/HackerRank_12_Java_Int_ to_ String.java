@@ -1,80 +1,56 @@
 /*
-    Static initialization blocks are executed when the class is loaded, 
-    and you can initialize static variables in those blocks.
+    You are given an integer "n", you have to convert it into a string.
 
-    It's time to test your knowledge of Static initialization blocks. 
-    You can read about it here:
-        https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
-        My Pick >>>>> https://www.geeksforgeeks.org/static-keyword-java/
+    Please complete the partially completed code in the editor. If your 
+    code successfully converts "n" into a string "s" the code will print 
+    "Good job". Otherwise it will print "Wrong answer".
 
-    You are given a class Solution with a main method. Complete the given 
-    code so that it outputs the area of a parallelogram with breadth "B"
-    and height "H". You should read the variables from the standard input.
-
-    If B ≤ 0 or H ≤ 0, the output should be: 
-    "java.lang.Exception: Breadth and height must be positive" without quotes.
-
-    Input Format:
-        There are two lines of input. The first line contains B: the breadth 
-        of the parallelogram. The next line contains H: the height of the 
-        parallelogram.
-
-    Constraints:
-        -100 ≤ B ≤ 100
-        -100 ≤ H ≤ 100
-    
-    Output Format:
-        If both values are greater than zero, then the main method must 
-        output the area of the parallelogram. Otherwise, print: 
-        "java.lang.Exception: Breadth and height must be positive" without quotes.
-
-    Sample input 1:
-        1
-        3
-
-    Sample output 1:
-        3
-
-    Sample input 2
-        -1
-        2
-
-    Sample output 2
-        java.lang.Exception: Breadth and height must be positive
-
-
+    "n" can range between -100 to 100 inclusive.
 */
-import java.io.*;
+
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-
+import java.security.*;
 public class Solution {
-    static int B;
-    static int H;  
-    static boolean flag;
-    static{ 
-        Scanner scan = new Scanner(System.in);
-        B = scan.nextInt();
-        H = scan.nextInt(); 
-        scan.close(); 
-        if (B>0 && H>0 && B<101 && H<101){
-            flag = true;
-        }
-        else{
-            flag = false;
-            System.out.println("java.lang.Exception: Breadth and height must be positive");
-        }
+ public static void main(String[] args) {
+
+  DoNotTerminate.forbidExit();
+
+  try {
+   Scanner in = new Scanner(System.in);
+   int n = in .nextInt();
+   in.close();
+   //String s=???; Complete this line below
+   //Write your code here
+   String s = Integer.toString(n);
+   ///////////////////////////////
+   if (n == Integer.parseInt(s)) {
+    System.out.println("Good job");
+   } else {
+    System.out.println("Wrong answer.");
+   }
+  } catch (DoNotTerminate.ExitTrappedException e) {
+   System.out.println("Unsuccessful Termination!!");
+  }
+ }
+}
+
+//The following class will prevent you from terminating the code using exit(0)!
+class DoNotTerminate {
+
+ public static class ExitTrappedException extends SecurityException {
+
+  private static final long serialVersionUID = 1;
+ }
+
+ public static void forbidExit() {
+  final SecurityManager securityManager = new SecurityManager() {
+   @Override
+   public void checkPermission(Permission permission) {
+    if (permission.getName().contains("exitVM")) {
+     throw new ExitTrappedException();
     }
-
-    public static void main(String[] args){
-        if(flag){
-            int area=B*H;
-            System.out.print(area);
-        }
-        
-    }//end of main
-
-}//end of class
-
+   }
+  };
+  System.setSecurityManager(securityManager);
+ }
+}
