@@ -28,19 +28,35 @@
 */
 import java.io.*;
 import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
 public class Solution {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int x = 1;
-        while(scan.hasNext()==true){
-            String out = scan.nextLine();
-            System.out.print(x + " " + out);
-            if(scan.hasNext()==true){
-                System.out.print("\n");
-            }
-            x++;
-        }
-        scan.close(); 
+static int B;
+static int H;  
+static boolean flag;
+static{ 
+    Scanner scan = new Scanner(System.in);
+    B = scan.nextInt();
+    H = scan.nextInt(); 
+    scan.close(); 
+    if (B>0 && H>0 && B<101 && H<101){
+        flag = true;
+    }
+    else{
+        flag = false;
+        System.out.println("java.lang.Exception: Breadth and height must be positive");
     }
 }
+
+public static void main(String[] args){
+		if(flag){
+			int area=B*H;
+			System.out.print(area);
+		}
+		
+	}//end of main
+
+}//end of class
+
