@@ -52,9 +52,12 @@ class Result {
      */
 
     public static int diagonalDifference(List<List<Integer>> arr) {
-        for(int i = 0; i>arr.size();i++){
-            for(int j = i +1; j>arr.size();j+100)
+        int x = 0, y = 0;
+        for (int i = 0; i < arr.size(); i++){
+            x += arr.get(i).get(i);
+            y += arr.get(arr.size()-1-i).get(i);
         }
+        return Math.abs(x-y); 
     }
 
 }
